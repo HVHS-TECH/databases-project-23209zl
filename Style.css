@@ -12,7 +12,7 @@ body {
   display: flex;
   gap: 20px;
 }
-
+  
 .column {
   display: flex;
   flex-direction: column;
