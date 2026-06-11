@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Project</title>
   <meta charset="UTF-8">
@@ -21,12 +22,26 @@
 <!--***************************************************
   BODY
 ****************************************************-->
+
 <body>
-  <button onclick="fb_login()">Login</button>
-  <br><button onclick="location.href='BballGame/BballGame.html'">Game 1</button>
-  <br><button onclick="location.href='GeoDash/GeoDash.html'">Game 2</button>
+  <form id="userDetail">
+    <br><br><label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" required />
+
+    <br><br><label for="age">Your age:</label>
+    <input type="number" id="age" name="age" required />
+
+    <br><br><input type="submit" value="Submit">
+    <button onclick="fb_login()">Login with Google</button>
+
+  </form>
+
+  <br><br><button onclick="location.href='BballGame/BballGame.html'">Game 1 - Bball Shooting</button>
+  <br><br><button onclick="location.href='GeoDash/GeoDash.html'">Game 2 - GeoDash</button>
   <script src="fbjs/fb_script.js"></script>
+
 </body>
+
 </html>
 <!--***************************************************
   END OF INDEX.HTML
