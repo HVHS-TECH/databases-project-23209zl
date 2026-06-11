@@ -1,0 +1,1 @@
+ firebase.database().ref('game1/users/highScores').set()
