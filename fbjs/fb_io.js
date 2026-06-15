@@ -7,11 +7,10 @@
  **************************************************************
  **************************************************************/
 
-var GLOBAL_user
+var GLOBAL_user;
 function fb_login() {
   authenticationListener = firebase.auth().onAuthStateChanged(fb_authenticate, fb_error)
 }
-var uid;
 
 function fb_authenticate(_user) {
   if (_user) {
