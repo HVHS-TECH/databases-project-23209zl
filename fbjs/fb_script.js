@@ -1,4 +1,3 @@
-
 function fb_write() {
     var userAge = document.getElementById("age").value;
     var userName = document.getElementById("name").value;

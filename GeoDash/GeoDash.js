@@ -16,7 +16,7 @@ function endGame(_player, _obstacle){
     player.remove();
     obstacles.removeAll();
     // Put your database writes here:
-    firebase.database().ref('/geo/'+GLOBAL_user["uid"]+'/score').set(score);
+    firebase.database().ref('/game2/'+GLOBAL_user["uid"]+'/score').set(score);
 
 
 }
