@@ -28,7 +28,7 @@
   <br>
   <form id="userDetail">
     <br><br><label for="name">Your Name:</label>
-    <input type="text" id="name" name="name" required />
+    <input type="text" id="name" name="name" maxlength= "10" required />
     <br><br><label for="age">Your age:</label>
     <input type="number" id="age" name="age" required />
     
@@ -36,9 +36,8 @@
     
 
   </form>
-
-  <br><br><button href='BballGame/BballGame.html'">Game 1 - Bball Shooting</button>
-  <br><br><button href='GeoDash/GeoDash.html'">Game 2 - GeoDash</button>
+<br><br><button onclick="window.location.href='BballGame/BballGame.html'">Game 1 - Bball Shooting</button>
+<br><br><button onclick="window.location.href='GeoDash/GeoDash.html'">Game 2 - Geo Dash</button>
   <script src="fbjs/fb_script.js"></script>
 
 </body>

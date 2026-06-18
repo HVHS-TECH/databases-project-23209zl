@@ -15,9 +15,13 @@ function endGame(_player, _obstacle){
     screenSelector = "end";
     player.remove();
     obstacles.removeAll();
-    // Put your database writes here:
-    firebase.database().ref('/game2/'+GLOBAL_user["uid"]+'/score').set(score);
 
+    // Put your database writes here:
+function fb_writeHighScore(){
+    
+firebase.database().ref('/game2/'+ GLOBAL_user["uid"]+'/score').set(score); 
+
+}
 
 }
 
