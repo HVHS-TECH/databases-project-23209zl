@@ -1,9 +1,10 @@
 function fb_write() {
+
     var userAge = document.getElementById("age").value;
     var userName = document.getElementById("name").value;
     const UID = GLOBAL_user["uid"];
 
-    firebase.database().ref('/game1/users/' + UID).set({
+    firebase.database().ref('/users/' + UID).set({
         name: userName,
         age: userAge,
     });

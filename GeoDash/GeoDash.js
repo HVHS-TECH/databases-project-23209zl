@@ -6,6 +6,7 @@
 //
 // Written by Mr Britton
 /*******************************************************/
+
 console.log("Running the game");
 
 
@@ -17,13 +18,11 @@ function endGame(_player, _obstacle){
     obstacles.removeAll();
 
     // Put your database writes here:
-function fb_writeHighScore(){
-    
-firebase.database().ref('/game2/'+ GLOBAL_user["uid"]+'/score').set(score); 
-
+function fb_highScore(){
+    firebase.database().ref('/users/'+ GLOBAL_user["uid"]+'/score').set(score); 
+}
 }
 
-}
 
 const SCREEN_WIDTH = 400;
 const SCREEN_HEIGHT = 200;
@@ -144,7 +143,6 @@ function resetGame(){
     player.collides(obstacles, endGame);
     score = 0;
 }
-
 
 /*******************************************************/
 //  END OF APP

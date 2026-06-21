@@ -248,9 +248,6 @@ function draw() {
 /*******************************************************/
 //Data Base codes
 /*******************************************************/
-firebase.database().ref('/game1/'+ GLOBAL_user["uid"]+'/score').set(score);{
-    
-}
 
 
 
