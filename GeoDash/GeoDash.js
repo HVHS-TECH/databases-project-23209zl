@@ -18,12 +18,13 @@ function endGame(_player, _obstacle) {
     obstacles.removeAll();
 
     // Put your database writes here:
-    firebase.database().ref('/users').push({
+    firebase.database().ref('/users'+ GLOBAL_user["uid"]).set({
         uid: GLOBAL_user.uid,
         name: GLOBAL_user.displayName,
-        score: score,
-        game: "GeoDash"
+        game: "GeoDash",
+        score: GLOBAL_user.score,
     });
+    firebase.database().ref('/game1/users'+ GLOBAL_user["uid"]).set(score)
 
     console.log("Score saved to leaderboard")
 }
