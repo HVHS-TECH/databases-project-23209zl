@@ -13,21 +13,30 @@ console.log("Running the game");
 // End game code
 function endGame(_player, _obstacle) {
     console.log("Game ended, you got " + score + " points.")
+
     screenSelector = "end";
     player.remove();
     obstacles.removeAll();
 
-    // Put your database writes here:
-    firebase.database().ref('/users'+ GLOBAL_user["uid"]).set({
-        uid: GLOBAL_user.uid,
-        name: GLOBAL_user.displayName,
-        game: "GeoDash",
-        score: GLOBAL_user.score,
-    });
-    firebase.database().ref('/game1/users'+ GLOBAL_user["uid"]).set(score)
+    if (!GLOBAL_user) {
+        console.log("User not logged in!");
+        return;
+    }
 
-    console.log("Score saved to leaderboard")
-}
+    let ref = firebase.database().ref('users/' + GLOBAL_user.uid + '/GeoDash');
+
+    ref.once('value', function(snapshot) {
+        let highScore = snapshot.val();
+
+        if (highScore == null || score > highScore) {
+            ref.set(score);
+            console.log("New high score saved!");
+        } else {
+            console.log("Score was lower than high score");
+        }
+    });
+
+} 
 
 
 
