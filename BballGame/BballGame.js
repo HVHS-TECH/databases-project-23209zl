@@ -216,6 +216,25 @@ function draw() {
 
         RestartBtn.visible = true;
 
+         if (!GLOBAL_user) {
+        console.log("User not logged in!");
+        return;
+    }
+
+    let ref = firebase.database().ref('users/' + GLOBAL_user.uid + '/Bball');
+
+    ref.once('value', function(snapshot) {
+        let highScore = snapshot.val();
+
+        if (highScore == null || score > highScore) {
+            ref.set(score);
+            console.log("New high score saved!");
+        } else {
+            console.log("Score was lower than high score");
+        }
+    });
+
+
         if (gameEnded && RestartBtn.mouse.pressed()) {
             gameEnded = false;
             gameStarted = true;
