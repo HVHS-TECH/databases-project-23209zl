@@ -19,7 +19,6 @@ let gameEnded = false;
 let score = 0;
 let speed = 3;
 let lives = 3;
-let checkIfFirebase = true;
 
 function preload() {
     imgBG = loadImage('background.jpg');
@@ -123,22 +122,6 @@ function draw() {
             BballBackboard.visible = false;
             gameStarted = false;
             gameEnded = true;
-            if (checkIfFirebase = true) {
-                let ref = firebase.database().ref('users/' + GLOBAL_user.uid + '/Bball');
-
-                ref.once('value', function (snapshot) {
-                    let highScore = snapshot.val();
-
-                    if (highScore == null || score > highScore) {
-                        ref.set(score);
-                        console.log("New high score saved!");
-                    } else {
-                        console.log("Score was lower than high score");
-                    }
-                });
-
-                checkIfFirebase = false;
-            }
         }
         //If live == 0 gameEnded = true, backboard and basketball visible = false
 
@@ -225,7 +208,7 @@ function draw() {
     // endScreen()
     /*******************************************************/
 
-    if (gameEnded == true) {
+    if (gameEnded) {
         textSize(35);
         fill('white');
         text("GAME ENDED! Your Final Score Is " + score + "!", 150, height / 2);
@@ -233,12 +216,24 @@ function draw() {
 
         RestartBtn.visible = true;
 
-        if (!GLOBAL_user) {
-            console.log("User not logged in!");
-            return;
+         if (!GLOBAL_user) {
+        console.log("User not logged in!");
+        return;
+        let ref = firebase.database().ref('users/' + GLOBAL_user.uid + '/Bball');
+
+    ref.once('value', function(snapshot) {
+        let highScore = snapshot.val();
+
+        if (highScore == null || score > highScore) {
+            ref.set(score);
+            console.log("New high score saved!");
+        } else {
+            console.log("Score was lower than high score");
         }
+    });
+    }
 
-
+    
 
 
         if (gameEnded && RestartBtn.mouse.pressed()) {
@@ -265,7 +260,6 @@ function draw() {
             Bball.y = 650;
 
             lives = 3;
-            checkIfFirebase = true;
         }
         //Play again button/restart button
     }
