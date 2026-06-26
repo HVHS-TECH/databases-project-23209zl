@@ -19,6 +19,7 @@ let gameEnded = false;
 let score = 0;
 let speed = 3;
 let lives = 3;
+let scoreSaved = false;
 
 function preload() {
     imgBG = loadImage('background.jpg');
@@ -28,6 +29,8 @@ function preload() {
 //images for the basketball, backboard and game screen
 
 function setup() {
+    fb_login();
+
     cnv = new Canvas(width, height);
 
     wallLH = new Sprite(0, height / 2, 20, height, 'k');
@@ -209,6 +212,12 @@ function draw() {
     /*******************************************************/
 
     if (gameEnded) {
+
+        if (!scoreSaved) {
+            saveHighScore();
+            scoreSaved = true;
+        }
+
         textSize(35);
         fill('white');
         text("GAME ENDED! Your Final Score Is " + score + "!", 150, height / 2);
@@ -217,6 +226,8 @@ function draw() {
         RestartBtn.visible = true;
 
         if (gameEnded && RestartBtn.mouse.pressed()) {
+            scoreSaved = false;
+
             gameEnded = false;
             gameStarted = true;
 
@@ -248,7 +259,27 @@ function draw() {
 /*******************************************************/
 //Data Base codes
 /*******************************************************/
+function saveHighScore() {
 
+    if (!GLOBAL_user) {
+        console.log("User not logged in!");
+        return;
+    }
+
+    let ref = firebase.database().ref('users/' + GLOBAL_user.uid + '/Basketball');
+
+    ref.once('value', function (snapshot) {
+        let highScore = snapshot.val();
+
+        if (highScore == null || score > highScore) {
+            ref.set(score);
+            console.log("New high score saved!");
+        } else {
+            console.log("Score was lower than high score");
+        }
+    });
+
+}
 
 
 /*******************************************************/
