@@ -46,12 +46,12 @@ function setup() {
 
     Bball = new Sprite(width / 2, 650, 100);
     Bball.image = (imgBball);
-    imgBball.resize(80, 80);
+    imgBball.resize(200, 200);
     //Basketball sprite and image
 
     BballBackboard = new Sprite(width / 2, 300, 250, 150, 'k');
     BballBackboard.image = (imgBackboard);
-    imgBackboard.resize(300, 250);
+    imgBackboard.resize(650, 550);
     //Backboard sprite and image
 
     StartBtn = new Sprite(width / 2, 800, 150, 50, 'k');
@@ -215,26 +215,6 @@ function draw() {
         //Final score text
 
         RestartBtn.visible = true;
-
-         if (!GLOBAL_user) {
-        console.log("User not logged in!");
-        return;
-        let ref = firebase.database().ref('users/' + GLOBAL_user.uid + '/Bball');
-
-    ref.once('value', function(snapshot) {
-        let highScore = snapshot.val();
-
-        if (highScore == null || score > highScore) {
-            ref.set(score);
-            console.log("New high score saved!");
-        } else {
-            console.log("Score was lower than high score");
-        }
-    });
-    }
-
-    
-
 
         if (gameEnded && RestartBtn.mouse.pressed()) {
             gameEnded = false;
