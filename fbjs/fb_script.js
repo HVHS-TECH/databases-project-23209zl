@@ -16,3 +16,4 @@ function fb_write() {
 
     console.log("Data sent to firebase");
 }
+
