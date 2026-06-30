@@ -3,19 +3,14 @@ firebase.database().ref("users").once("value", function(snapshot) {
     let basketballScores = [];
 
     snapshot.forEach(function(childSnapshot) {
-
         basketballScores.push(childSnapshot.val());
-
     });
 
     basketballScores.sort(function(a, b) {
-
-        return b.Basketball - a.Basketball;
-
+        return (b.Basketball || 0) - (a.Basketball || 0);
     });
 
     let leaderboard = document.getElementById("basketballList");
-
     leaderboard.innerHTML = "";
 
     for (let i = 0; i < 5; i++) {
@@ -28,13 +23,10 @@ firebase.database().ref("users").once("value", function(snapshot) {
                 "<li>" +
                 player.displayName +
                 " - " +
-                player.Basketball +
+                (player.Basketball || 0) +
                 "</li>";
-
         }
-
     }
-
 });
 
 
