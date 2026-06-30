@@ -1,33 +1,74 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
 body {
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
   margin: 0;
-  background-color: #f0f0f0;
-}
-
-.container {
-  display: flex;
-  gap: 20px;
-}
-  
-.column {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
-  transition: background-color 0.3s;
-  width: 220px; /* Set a fixed width */
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #2c2c54);
+  color: white;
   text-align: center;
+}
+
+/* =========================
+   HEADINGS / TEXT
+========================= */
+p, label {
+  font-size: 16px;
+}
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: #45a049;
+  transform: scale(1.05);
+}
+
+/* =========================
+   FORM BOX
+========================= */
+form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  width: 300px;
+  margin: 20px auto;
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+}
+
+/* Inputs */
+input {
+  width: 90%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+/* =========================
+   GAME BUTTONS (nav links)
+========================= */
+a button {
+  width: 250px;
+}
+
+/* =========================
+   LEADERBOARD / LINKS AREA
+========================= */
+br {
+  line-height: 10px;
 }
