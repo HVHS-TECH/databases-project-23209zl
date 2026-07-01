@@ -21,7 +21,7 @@ firebase.database().ref("users").once("value", function(snapshot) {
 
             leaderboard.innerHTML +=
                 "<li>" +
-                player.displayName +
+                player.name +
                 " - " +
                 (player.Basketball || 0) +
                 "</li>";
@@ -58,7 +58,7 @@ firebase.database().ref("users").once("value", function(snapshot) {
 
             leaderboard.innerHTML +=
                 "<li>" +
-                player.displayName +
+                player.name +
                 " - " +
                 (player.GeoDash || 0) +
                 "</li>";
